@@ -1,0 +1,15 @@
+@import "../lib/weui.wxss";
+.picker{
+    padding: 13px;
+    background-color: #FFFFFF;
+}
+.section-val{
+  color:#333;
+}
+.section{
+  display: flex;
+  align-items: center;
+}
+.section_title{
+  margin-bottom: 0;
+}

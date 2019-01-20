@@ -1,0 +1,7 @@
+
+<view class="section">
+  <view class="section__title" style="margin-bottom:0;">当前时间：</view>
+  <picker mode="multiSelector" range="{{dateArray}}" value="{{dateIndex}}" bindchange="datePickerChange">
+  <view class="section-val">{{dateVal}}</view>
+  </picker>
+</view>
