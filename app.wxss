@@ -83,7 +83,6 @@ checkbox, radio{
 }
 .section__title{
     margin-bottom: 8px;
-    padding-left: 15px;
     padding-right: 15px;
 }
 .section_gap .section__title{

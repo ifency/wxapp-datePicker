@@ -1,4 +1,4 @@
-@import "../lib/weui.wxss";
+
 .picker{
     padding: 13px;
     background-color: #FFFFFF;
@@ -9,6 +9,8 @@
 .section{
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 200rpx;
 }
 .section_title{
   margin-bottom: 0;
