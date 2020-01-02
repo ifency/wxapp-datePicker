@@ -66,3 +66,5 @@ const datePicker = new DatePicker(params);
 效果如下：
 ![日期时间选择器demo](/docs/IMB_2.GIF)
 
+
+不错的话，请点start，笔芯～当然如果还有问题的话，可以提出来
