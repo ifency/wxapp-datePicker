@@ -1,6 +1,8 @@
 import { DatePicker } from '../utils/datePicker';
-
-const datePicker = new DatePicker();
+const params={
+  dateArr:['今天','明天','后天']
+}
+const datePicker = new DatePicker(params);
 const dateArr = datePicker.datePicker();
 
 Page({

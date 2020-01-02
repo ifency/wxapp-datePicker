@@ -1,7 +1,7 @@
 # 小程序 - 日期时间选择器
 含有今天，明天，后天的关键词，wepy，Taro，wepy或者原生都可引用
 
-![日期时间选择器demo](/docs/ckgfo-1sgha.gif)
+![日期时间选择器demo](/docs/IMB_1.GIF)
 
 ### 使用的方法：
 * 先引用js文件：
@@ -32,5 +32,37 @@ const datePicker = new DatePicker();
 const dateArr = datePicker.datePicker();
 ```
 
-* 赋值给业务上的数据
+* 然后把dateArr传给range的值（dateArray);
+```
+this.setDate({
+    dateArray: dateArr.dateAll,
+})
+```
+
+* value这个值，如果不传的话，默认值就是当前时间
+```
+this.setDate({
+    dateArray: dateArr.currentDateArr,
+})
+```
+
+* 仅仅展示“今天 某某时间“，这倒可以的，但需要把这个时间传给接口时，这就需要转换为日期格式的，所以我这边还提供能转换日期格式的功能，使用如下：
+```
+//需要把range，当前选择的下标一起携带去
+this.setData({
+    dataVal: datePicker.toDate(dateArr.dateAll,dateArr.currentDateArr)
+})
+```
+
+这样就可以了。
+
+但如果只需要第一列只需要“今天，明天，后天”这三个的话，那实例化对象给个这三个的就可以了，如下：
+```
+const params={
+    dateArr:['今天','明天','后天']
+}
+const datePicker = new DatePicker(params);
+```
+效果如下：
+![日期时间选择器demo](/docs/IMB_2.GIF)
 
