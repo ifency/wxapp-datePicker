@@ -12,7 +12,16 @@
         * git clone https://github.com/FernwehNancy/wxapp-datePicker.git
         * 把datePicker.js文件复制到自己的项目里
 
-* 在需要引入日期选择的文件里实例化对象
+* wxml文件插入picker多列选择器
+```
+<view class="section">
+  <picker mode="multiSelector" range="{{dateArray}}" value="{{dateIndex}}" bindchange="datePickerChange">
+  <view class="section-val">{{dateVal}}</view>
+  </picker>
+</view>
+```
+
+* 然后在js文件上引入日期选择的文件里实例化对象，如下
 ```
 //引入datePicker的实例对象
 import { DatePicker } from '../utils/datePicker2';
