@@ -1,4 +1,5 @@
 const weekArr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']; //一周的格式
+const strArr = ['今天','明天','后天'];
 
 export class DatePicker{
     constructor( obj ){
@@ -12,7 +13,7 @@ export class DatePicker{
         this.dateArr = obj ? obj.dateArr || [] : [];
         this.defaultTime = obj ? obj.defaultTime || [] : [];
     }
-
+    /** 补零 */
     withZero( params ){
         return params < 10 ? '0' + params : ''+params;
     }
@@ -23,25 +24,23 @@ export class DatePicker{
     getMonth( start, end ){
         let array = [];
         let weekIndex = -1;
-        
-        
+
         if ( this.dateArr.length>0 ){
-            
             this.dateArr.forEach( (item,index)=>{
-                array.push(`${item} ${weekArr[this.week+index]}`)
+                array.push(`${item} ${weekArr[this.week+index>6 ? this.week+index-7 : this.week+index]}`)
             })
             return array;
         } 
         
         for(let i = start; i <= end; i++){
 
-            let days = this.getMonthDay(i);
+            const days = this.getMonthDay(i);
 
             for(let j = 1; j <= days; j++){
+                console.log('j:'+j);
                 weekIndex = new Date(`${this.year}-${this.withZero(i)}-${this.withZero(j)}`).getDay();
 
                 let str = '';
-
                 if( i === this.month && j === this.day){
                     str = '今天';
                 }else if( i === this.month && j === this.day + 1){
@@ -165,14 +164,19 @@ export class DatePicker{
         
         let tempDate = arrAll[0][currentDate[0]];
         let tempTime = `${arrAll[1][currentDate[1]]}:${arrAll[2][currentDate[2]]}`;
+        let todayDay = this.getMonthDay(this.month);
         // console.log(tempTime);
         
         if(tempDate.indexOf('今天') > -1){
             return `${ this.withZero(this.month) }月${ this.withZero(this.day) }日 ${tempTime}`;
         }else if(tempDate.indexOf('明天') > -1){
-            return `${ this.withZero(this.month) }月${ this.withZero(this.day+1) }日 ${tempTime}`;
+            let nextMonth = this.day+1>todayDay ? this.month+1 : this.month;
+            let nextDay = this.day+1>todayDay ? 1 : this.day+1;
+            return `${ this.withZero(nextMonth) }月${ this.withZero(nextDay) }日 ${tempTime}`;
         }else if(tempDate.indexOf('后天') > -1){
-            return `${ this.withZero(this.month) }月${ this.withZero(this.day+2) }日 ${tempTime}`
+            let nextMonth = this.day+2>todayDay ? this.month+1 : this.month;
+            let nextDay = this.day+2>todayDay ? this.day+2-31 : this.day+2;
+            return `${ this.withZero(nextMonth) }月${ this.withZero(nextDay) }日 ${tempTime}`
         }
         return `${tempDate} ${tempTime}`;
     }
