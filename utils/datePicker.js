@@ -37,7 +37,6 @@ export class DatePicker{
             const days = this.getMonthDay(i);
 
             for(let j = 1; j <= days; j++){
-                console.log('j:'+j);
                 weekIndex = new Date(`${this.year}-${this.withZero(i)}-${this.withZero(j)}`).getDay();
 
                 let str = '';
@@ -165,7 +164,6 @@ export class DatePicker{
         let tempDate = arrAll[0][currentDate[0]];
         let tempTime = `${arrAll[1][currentDate[1]]}:${arrAll[2][currentDate[2]]}`;
         let todayDay = this.getMonthDay(this.month);
-        // console.log(tempTime);
         
         if(tempDate.indexOf('今天') > -1){
             return `${ this.withZero(this.month) }月${ this.withZero(this.day) }日 ${tempTime}`;
